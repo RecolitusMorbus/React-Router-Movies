@@ -22,15 +22,34 @@ export default class MovieList extends Component {
       });
   }
 
+//   render() {
+//     return (
+//       <div className="movie-list">
+//         {this.state.movies.map(movie => (
+//           <Link to={`/movies/${movie.id}`} key={movie.id}>
+//             <MovieCard movie={movie} />
+//           </Link>
+//         ))}
+//       </div>
+//     );
+//   }
+// }
+
   render() {
     return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
-          <Link to={`/movies/${movie.id}`} key={movie.id}>
-            <MovieCard movie={movie} />
-          </Link>
+          <MovieDetails key={movie.id} movie={movie} />
         ))}
       </div>
     );
   }
+}
+
+function MovieDetails({ movie }) {
+  return (
+    <Link to={`/movies/${movie.id}`}>
+      <MovieCard movie={movie} />
+    </Link>
+  )
 }
