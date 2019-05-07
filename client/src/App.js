@@ -18,18 +18,34 @@ export default class App extends Component {
     this.setState({ savedList });
   };
 
+//   render() {
+//     return (
+//       <div>
+//         <SavedList list={this.state.savedList} />
+//         <Route exact path='/' component={MovieList} />
+//         <Route
+//           path='/movie/:id'
+//           render={(props) => <Movie
+//             {...props}
+//             addToSavedList={this.addToSavedList}
+//           />}
+//         />
+//       </div>
+//     );
+//   }
+// }
+
+/* Turns out the return statement actually matter, so...remember that. */
   render() {
     return (
       <div>
         <SavedList list={this.state.savedList} />
-        <Route exact path='/' component={MovieList} />
-        <Route
-          path='/movie/:id'
-          render={(props) => <Movie
-            {...props}
-            addToSavedList={this.addToSavedList}
-          />}
-        />
+        <Route exact path="/" component={MovieList} />
+        <Route path="/movies/:id" render={(props) => {
+          return (
+            <Movie {...props} addToSavedList={this.addToSavedList}/>
+          );
+        }} />
       </div>
     );
   }
